@@ -4,39 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="20b99379-65b0-4ac0-955d-d3e46b6ab2a9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.run/desktop.run.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Camera.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Dielectric.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Hit.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Hittable.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/ImagePanel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Lambert.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Material.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Metal.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Point3.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Ray.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/RayTracer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/RenderController.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Sphere.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Triangle.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/World.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/loadObjFile.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/view/Application.kt" afterDir="false" />
+    <list default="true" id="20b99379-65b0-4ac0-955d-d3e46b6ab2a9" name="Changes" comment="init">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +36,7 @@
     "Kotlin.App.executor": "Run",
     "Kotlin.MainKt.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -119,11 +90,32 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1715287623021</updated>
-      <workItem from="1715287624069" duration="2360000" />
+      <workItem from="1715287624069" duration="6265000" />
     </task>
+    <task id="LOCAL-00001" summary="init">
+      <option name="closed" value="true" />
+      <created>1715289996489</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715289996489</updated>
+    </task>
+    <task id="LOCAL-00002" summary="init">
+      <option name="closed" value="true" />
+      <created>1715292765767</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715292765767</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
 </project>
