@@ -1,6 +1,5 @@
 package raytracer.model
 
-import androidx.compose.ui.graphics.ImageBitmap
 import kotlinx.coroutines.*
 import java.awt.image.BufferedImage
 import java.util.concurrent.Executors
@@ -9,7 +8,7 @@ import kotlin.random.Random
 
 class RenderController(
     var repaintIntervalMs: Long,
-    val batchSize: Int,
+    var batchSize: Int,
 ) : AutoCloseable {
     private var renderJob: Job? = null
     private val renderDispatcher =

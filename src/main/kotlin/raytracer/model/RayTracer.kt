@@ -1,6 +1,6 @@
 package raytracer.model
 
-class RayTracer(private val world: World, val maxDepth: Int) {
+class RayTracer(private val world: World, var maxDepth: Int) {
     fun color(ray: Ray, depth: Int): Color {
         if (depth <= 0) return Point3.ZERO
 

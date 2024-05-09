@@ -16,14 +16,14 @@ import kotlin.math.tan
  * @param focusDist  Фокусное расстояние от камеры до объекта съёмки.
  */
 class Camera(
-    origin: Point3,
-    target: Point3,
+    private var origin: Point3,
+    private var target: Point3,
     vup: Point3,
     fov: Double,
     var aperture: Double,
     focusDist: Double,
-    imageWidth: Int,
-    imageHeight: Int,
+    var imageWidth: Int,
+    var imageHeight: Int,
     samplesPerPixel: Int,
 ) {
     private var _origin = origin
@@ -31,12 +31,12 @@ class Camera(
     private var _vup = vup
     private var _imageWidth = imageWidth.toDouble()
     private var _imageHeight = imageHeight.toDouble()
-    private var _samplesPerPixel = samplesPerPixel
-    private var _movementSpeed = 0.1
 
-    val origin: Point3 get() = _origin
-    val target: Point3 get() = _target
-    val vup: Point3 get() = _vup
+    var vup: Point3 = _vup
+        set(value) {
+            field = value
+            updateCamera()
+        }
     var fov: Double = fov
         set(value) {
             field = value
@@ -47,12 +47,10 @@ class Camera(
             field = value
             updateProjection()
         }
-    val imageWidth: Int get() = _imageWidth.toInt()
-    val imageHeight: Int get() = _imageHeight.toInt()
-    val samplesPerPixel: Int get() = _samplesPerPixel
+    var samplesPerPixel: Int = 5
     val aspectRatio: Double get() = _imageWidth / _imageHeight
     val lensRadius: Double get() = aperture / 2
-    val movementSpeed: Double get() = _movementSpeed
+    var movementSpeed: Double = 0.1
 
     private var v: Point3 = Point3.ZERO
     private var u: Point3 = Point3.ZERO
@@ -97,12 +95,12 @@ class Camera(
     }
 
     fun moveUp() {
-        _origin += _vup * _movementSpeed
+        _origin += _vup * movementSpeed
         updateCamera()
     }
 
     fun moveDown() {
-        _origin -= _vup * _movementSpeed
+        _origin -= _vup * movementSpeed
         updateCamera()
     }
 
