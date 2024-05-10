@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b99379-65b0-4ac0-955d-d3e46b6ab2a9" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/new_tracer/model/Hittable.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/new_tracer/model/Material.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/view/ObjectController.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Camera.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Camera.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Hittable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Traceable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Point3.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Point3.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/RayTracer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/RayTracer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/RenderController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/RenderController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Sphere.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Sphere.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Triangle.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Triangle.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/World.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/World.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715334961781</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="init">
+      <option name="closed" value="true" />
+      <created>1715337964329</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715337964329</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

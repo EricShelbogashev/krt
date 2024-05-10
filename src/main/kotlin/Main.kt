@@ -21,13 +21,16 @@ import androidx.compose.ui.window.application
 import raytracer.model.Camera
 import raytracer.model.RayTracer
 import raytracer.model.RenderController
+import raytracer.model.World
 import raytracer.view.CameraSettings
+import raytracer.view.ObjectController
 import raytracer.view.RayTracerSettings
 import raytracer.view.RenderControllerSettings
 import java.awt.image.BufferedImage
 
 fun main() = application {
-    val rayTracer = RayTracer.default()
+    val world = World.default()
+    val rayTracer = RayTracer(world, 7)
     val camera = Camera.default()
     val renderController = RenderController.default()
 
@@ -80,6 +83,7 @@ fun main() = application {
                 Image(bitmap = imageBitmap, contentDescription = null)
                 Box(Modifier.verticalScroll(scrollState)) {
                     settingsPanel(
+                        world,
                         rayTracer,
                         camera,
                         renderController,
@@ -97,6 +101,7 @@ fun main() = application {
 
 @Composable
 fun settingsPanel(
+    world: World,
     rayTracer: RayTracer,
     camera: Camera,
     renderController: RenderController,
@@ -154,6 +159,7 @@ fun settingsPanel(
                 }
             }
         }
+        ObjectController(world)
     }
 }
 

@@ -35,7 +35,7 @@ class RenderController(
                             val u = (i.toDouble() + Random.nextDouble()) / (camera.imageWidth - 1)
                             val v = (j.toDouble() + Random.nextDouble()) / (camera.imageHeight - 1)
                             val r = camera.ray(u, v)
-                            acc + rayTracer.color(r, rayTracer.maxDepth)
+                            acc + rayTracer.color(r)
                         }
                         if (isActive) {
                             image.setRGB(

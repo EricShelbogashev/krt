@@ -3,25 +3,24 @@ package raytracer.model
 import kotlin.random.Random
 
 class World(
-    private val objects: MutableList<Hittable> = mutableListOf(),
+    private var root: Traceable? = null
 ) {
-    fun hit(ray: Ray, tMin: Double, tMax: Double): Hit? {
-        var closestSoFar = tMax
-        var result: Hit? = null
-
-        for (obj in objects) {
-            val hitRecord = obj.hit(ray, tMin, closestSoFar)
-            if (hitRecord != null) {
-                closestSoFar = hitRecord.t
-                result = hitRecord
-            }
+    fun add(obj: Traceable) {
+        root = if (root == null) {
+            obj
+        } else {
+            BVHNode(listOf(root!!, obj), 0.0, 1.0) // Assuming fixed time0 and time1 for simplicity
         }
-        return result
+    }
+
+    fun hit(ray: Ray, tMin: Double, tMax: Double): Hit? {
+        return root?.hit(ray, tMin, tMax)
     }
 
     companion object {
-        fun default() = World().apply {
-            objects.add(Sphere(Point3(0.0, -1000.0, 0.0), 1000.0, Lambert(Color(0.5, 0.5, 0.5))))
+        fun default(): World {
+            val world = World()
+            world.add(Sphere(Point3(0.0, -1000.0, 0.0), 1000.0, Lambert(Color(0.5, 0.5, 0.5))))
 
             for (a in -11 until 11) {
                 for (b in -11 until 11) {
@@ -33,30 +32,31 @@ class World(
                             chooseMaterial < 0.95 -> Metal(Point3.random(0.5, 1.0), Random.nextDouble(0.0, 0.5))
                             else -> Dielectric(1.5)
                         }
-                        objects.add(Sphere(center, 0.2, material))
+                        world.add(Sphere(center, 0.2, material))
                     }
                 }
             }
 
-            objects.add(Sphere(Point3(0.0, 1.0, 0.0), 1.0, Dielectric(1.5)))
-            objects.add(Sphere(Point3(-4.0, 1.0, 0.0), 1.0, Lambert(Color(0.4, 0.2, 0.1))))
-            objects.add(Sphere(Point3(4.0, 1.0, 0.0), 1.0, Metal(Color(0.7, 0.6, 0.5), 0.05)))
+            world.add(Sphere(Point3(0.0, 1.0, 0.0), 1.0, Dielectric(1.5)))
+            world.add(Sphere(Point3(-4.0, 1.0, 0.0), 1.0, Lambert(Color(0.4, 0.2, 0.1))))
+            world.add(Sphere(Point3(4.0, 1.0, 0.0), 1.0, Metal(Color(0.7, 0.6, 0.5), 0.05)))
+
+            return world
         }
     }
 }
 
 
-class BVHNode(objects: List<Hittable>, time0: Double, time1: Double) : Hittable {
-    private var left: Hittable? = null
-    private var right: Hittable? = null
+class BVHNode(objects: List<Traceable>, time0: Double, time1: Double) : Traceable {
+    private var left: Traceable? = null
+    private var right: Traceable? = null
     private var box: AABB? = null
 
     init {
         val axis = Random.nextInt(3)
-        val sortedObjects = objects.sortedWith(Comparator { a, b ->
+        val sortedObjects = objects.sortedWith { a, b ->
             a.boundingBox(time0, time1)!!.min[axis].compareTo(b.boundingBox(time0, time1)!!.min[axis])
-        })
-
+        }
         when (sortedObjects.size) {
             1 -> {
                 left = sortedObjects[0]
@@ -95,6 +95,11 @@ class BVHNode(objects: List<Hittable>, time0: Double, time1: Double) : Hittable 
 
     override fun boundingBox(time0: Double, time1: Double): AABB? {
         return box
+    }
+
+    override fun translate(offset: Point3) {
+        left?.translate(offset)
+        right?.translate(offset)
     }
 }
 

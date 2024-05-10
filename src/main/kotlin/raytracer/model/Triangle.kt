@@ -1,11 +1,14 @@
 package raytracer.model
 
+import java.util.*
+
 class Triangle(
     private val v0: Point3,
     private val v1: Point3,
     private val v2: Point3,
     private val material: Material,
-) : Hittable {
+) : Traceable {
+    private val uuid by lazy { UUID.randomUUID() }
 
     override fun hit(ray: Ray, tMin: Double, tMax: Double): Hit? {
         val edge1 = v1 - v0
@@ -54,5 +57,15 @@ class Triangle(
         val maxPoint = Point3(maxX, maxY, maxZ)
 
         return AABB(minPoint, maxPoint)
+    }
+
+    override fun translate(offset: Point3) {
+        v0.translate(offset)
+        v1.translate(offset)
+        v2.translate(offset)
+    }
+
+    override fun id(): String {
+        return "Triangle[$uuid]"
     }
 }

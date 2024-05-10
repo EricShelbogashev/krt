@@ -1,14 +1,18 @@
 package raytracer.model
 
 class RayTracer(private val world: World, var maxDepth: Int) {
-    fun color(ray: Ray, depth: Int): Color {
+    fun color(ray: Ray): Color {
+        return colorRecursively(ray, maxDepth)
+    }
+
+    private fun colorRecursively(ray: Ray, depth: Int): Color {
         if (depth <= 0) return Point3.ZERO
 
         val hitRecord = world.hit(ray, 0.001, Double.POSITIVE_INFINITY)
         return if (hitRecord != null) {
             val scattered = hitRecord.material.scatter(ray, hitRecord)
             if (scattered != null) {
-                scattered.attenuation * color(scattered.ray, depth - 1)
+                scattered.attenuation * colorRecursively(scattered.ray, depth - 1)
             } else {
                 Point3.ZERO
             }

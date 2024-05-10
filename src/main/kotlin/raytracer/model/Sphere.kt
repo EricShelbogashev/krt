@@ -1,8 +1,10 @@
 package raytracer.model
 
+import java.util.*
 import kotlin.math.sqrt
 
-class Sphere(private val center: Point3, private val radius: Double, private val material: Material) : Hittable {
+class Sphere(private val center: Point3, private val radius: Double, private val material: Material) : Traceable {
+    private val uuid by lazy { UUID.randomUUID() }
 
     override fun hit(ray: Ray, timeMin: Double, timeMax: Double): Hit? {
         val oc = ray.origin - center
@@ -31,8 +33,15 @@ class Sphere(private val center: Point3, private val radius: Double, private val
     }
 
     override fun boundingBox(time0: Double, time1: Double): AABB? {
-        // Simple bounding box calculation assuming static sphere
         val offset = Point3(radius, radius, radius)
         return AABB(center - offset, center + offset)
+    }
+
+    override fun translate(offset: Point3) {
+        center.translate(offset)
+    }
+
+    override fun id(): String {
+        return "Sphere[$uuid]"
     }
 }

@@ -62,6 +62,11 @@ data class Point3(var x: Double = 0.0, var y: Double = 0.0, var z: Double = 0.0)
     }
 
     fun isNearZero(): Boolean = (x * x + y * y + z * z) < 1e-8
+    fun translate(offset: Point3) {
+        x += offset.x
+        y += offset.y
+        z += offset.z
+    }
 }
 
 typealias Color = Point3
