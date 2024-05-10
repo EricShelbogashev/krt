@@ -1,6 +1,5 @@
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.focusable
-import androidx.compose.foundation.gestures.FlingBehavior
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -80,9 +79,13 @@ fun main() = application {
             Row {
                 Image(bitmap = imageBitmap, contentDescription = null)
                 Box(Modifier.verticalScroll(scrollState)) {
-                    settingsPanel(rayTracer, camera, renderController, buffer, { buffer = it }) { newImage ->
-                        imageBitmap = newImage.toComposeImageBitmap()
-                    }
+                    settingsPanel(
+                        rayTracer,
+                        camera,
+                        renderController,
+                        buffer,
+                        { buffer = it },
+                        { imageBitmap = it.toComposeImageBitmap() })
                 }
             }
         }

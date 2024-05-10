@@ -133,8 +133,8 @@ class Camera(
         val halfWidth = aspectRatio * halfHeight
 
         lowerLeftCorner = origin - u * halfWidth * focusDist - v * halfHeight * focusDist - w * focusDist
-        horizontal = u * 2.0 * halfWidth * focusDist
-        vertical = v * 2.0 * halfHeight * focusDist
+        horizontal = u * halfWidth * focusDist
+        vertical = v * halfHeight * focusDist
     }
 
     fun ray(s: Double, t: Double): Ray {

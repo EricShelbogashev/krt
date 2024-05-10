@@ -1,10 +1,7 @@
 package raytracer.view
 
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Slider
@@ -13,6 +10,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import raytracer.model.Camera
+import kotlin.math.nextUp
 
 
 @Composable
@@ -26,7 +24,6 @@ fun CameraSettings(camera: Camera, onUpdateSettings: () -> Unit) {
         // Field of View Slider
         var fov by remember { mutableStateOf(camera.fov) }
         Text("Field of View: ${fov.toInt()}°")
-
         Slider(
             value = fov.toFloat(),
             onValueChange = { newValue ->
@@ -35,13 +32,13 @@ fun CameraSettings(camera: Camera, onUpdateSettings: () -> Unit) {
                 onUpdateSettings()
             },
             valueRange = 1f..180f,
-            steps = 179
+            steps = 179,
+            modifier = Modifier.width(200.dp)  // Applying width here
         )
 
         // Aperture Slider
         var aperture by remember { mutableStateOf(camera.aperture) }
         Text("Aperture: $aperture")
-
         Slider(
             value = aperture.toFloat(),
             onValueChange = { newValue ->
@@ -49,14 +46,14 @@ fun CameraSettings(camera: Camera, onUpdateSettings: () -> Unit) {
                 camera.aperture = newValue.toDouble()
                 onUpdateSettings()
             },
-            valueRange = 0.1f..10f,
-            steps = 99
+            valueRange = 0.0f..10f,
+            steps = 199,
+            modifier = Modifier.width(200.dp)  // Applying width here
         )
 
         // Focus Distance Slider
         var focusDist by remember { mutableStateOf(camera.focusDist) }
         Text("Focus Distance: $focusDist")
-
         Slider(
             value = focusDist.toFloat(),
             onValueChange = { newValue ->
@@ -64,8 +61,37 @@ fun CameraSettings(camera: Camera, onUpdateSettings: () -> Unit) {
                 camera.focusDist = newValue.toDouble()
                 onUpdateSettings()
             },
-            valueRange = 0.1f..100f,
-            steps = 999
+            valueRange = 0.0f..10.0f,
+            steps = 999,
+            modifier = Modifier.width(200.dp)  // Applying width here
+        )
+
+        var samplesPerPixel by remember { mutableStateOf(camera.samplesPerPixel) }
+        Text("Samples per pixel: $samplesPerPixel")
+        Slider(
+            value = samplesPerPixel.toFloat(),
+            onValueChange = { newValue ->
+                samplesPerPixel = newValue.toInt()
+                camera.samplesPerPixel = samplesPerPixel
+                onUpdateSettings()
+            },
+            valueRange = 1.0f..50.0f,
+            steps = 49,
+            modifier = Modifier.width(200.dp)  // Applying width here
+        )
+
+        var movementSpeed by remember { mutableStateOf(camera.movementSpeed) }
+        Text("Movement speed: $movementSpeed")
+        Slider(
+            value = movementSpeed.toFloat(),
+            onValueChange = { newValue ->
+                movementSpeed = newValue.toDouble()
+                camera.movementSpeed = movementSpeed
+                onUpdateSettings()
+            },
+            valueRange = 0.1f..3.0f,
+            steps = 100,
+            modifier = Modifier.width(200.dp)  // Applying width here
         )
 
         // Image Width Integer Field
