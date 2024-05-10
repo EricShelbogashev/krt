@@ -16,21 +16,19 @@ import kotlin.math.tan
  * @param focusDist  Фокусное расстояние от камеры до объекта съёмки.
  */
 class Camera(
-    private var origin: Point3,
-    private var target: Point3,
+    origin: Point3,
+    target: Point3,
     vup: Point3,
     fov: Double,
     var aperture: Double,
     focusDist: Double,
     var imageWidth: Int,
     var imageHeight: Int,
-    samplesPerPixel: Int,
+    samplesPerPixel: Int = 5
 ) {
     private var _origin = origin
     private var _target = target
     private var _vup = vup
-    private var _imageWidth = imageWidth.toDouble()
-    private var _imageHeight = imageHeight.toDouble()
 
     var vup: Point3 = _vup
         set(value) {
@@ -47,8 +45,9 @@ class Camera(
             field = value
             updateProjection()
         }
-    var samplesPerPixel: Int = 5
-    val aspectRatio: Double get() = _imageWidth / _imageHeight
+
+    var samplesPerPixel = 5
+    val aspectRatio: Double get() = imageWidth.toDouble() / imageHeight.toDouble()
     val lensRadius: Double get() = aperture / 2
     var movementSpeed: Double = 0.1
 
@@ -73,66 +72,36 @@ class Camera(
     }
 
     fun adjustPitch(delta: Double) {
-        pitch += delta
-        pitch = pitch.coerceIn(-maxPitch, maxPitch)
-        updateCamera()
-    }
-
-    fun moveForward() {
-        moveInDirection(cos(pitch) * cos(yaw), sin(pitch), cos(pitch) * sin(yaw))
-    }
-
-    fun moveBackward() {
-        moveInDirection(-cos(pitch) * cos(yaw), -sin(pitch), -cos(pitch) * sin(yaw))
-    }
-
-    fun moveLeft() {
-        moveInDirection(sin(yaw), 0.0, -cos(yaw))
-    }
-
-    fun moveRight() {
-        moveInDirection(-sin(yaw), 0.0, cos(yaw))
-    }
-
-    fun moveUp() {
-        _origin += _vup * movementSpeed
-        updateCamera()
-    }
-
-    fun moveDown() {
-        _origin -= _vup * movementSpeed
+        pitch = (pitch + delta).coerceIn(-maxPitch, maxPitch)
         updateCamera()
     }
 
     private fun moveInDirection(x: Double, y: Double, z: Double) {
-        val direction = Point3(x, y, z)
-        _origin += direction * movementSpeed
+        _origin += Point3(x, y, z) * movementSpeed
         updateCamera()
     }
 
-    private fun updateCamera() {
-        updateCameraLookAt()
-        updateOrientation()
-        updateProjection()
-    }
+    fun moveForward() = moveInDirection(cos(pitch) * cos(yaw), sin(pitch), cos(pitch) * sin(yaw))
+    fun moveBackward() = moveInDirection(-cos(pitch) * cos(yaw), -sin(pitch), -cos(pitch) * sin(yaw))
+    fun moveLeft() = moveInDirection(sin(yaw), 0.0, -cos(yaw))
+    fun moveRight() = moveInDirection(-sin(yaw), 0.0, cos(yaw))
+    fun moveUp() = run { _origin += _vup * movementSpeed; updateCamera() }
+    fun moveDown() = run { _origin -= _vup * movementSpeed; updateCamera() }
 
-    private fun updateCameraLookAt() {
+    private fun updateCamera() {
         val forward = Point3(cos(pitch) * cos(yaw), sin(pitch), cos(pitch) * sin(yaw))
         _target = _origin + forward
-    }
-
-    private fun updateOrientation() {
         w = (_origin - _target).unit()
         u = _vup.cross(w).unit()
         v = w.cross(u)
+        updateProjection()
     }
 
     private fun updateProjection() {
         val theta = Math.toRadians(fov)
         val halfHeight = tan(theta / 2)
         val halfWidth = aspectRatio * halfHeight
-
-        lowerLeftCorner = origin - u * halfWidth * focusDist - v * halfHeight * focusDist - w * focusDist
+        lowerLeftCorner = _origin - (u * halfWidth + v * halfHeight + w) * focusDist
         horizontal = u * 2.0 * halfWidth * focusDist
         vertical = v * 2.0 * halfHeight * focusDist
     }
@@ -155,8 +124,7 @@ class Camera(
             aperture = 0.1,
             focusDist = 10.0,
             imageWidth = 400,
-            imageHeight = 400,
-            samplesPerPixel = 5,
+            imageHeight = 400
         )
     }
 }
