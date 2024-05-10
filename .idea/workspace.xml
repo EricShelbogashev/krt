@@ -6,12 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="20b99379-65b0-4ac0-955d-d3e46b6ab2a9" name="Changes" comment="init">
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Point3.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Point3.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/RayTracer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/RayTracer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Sphere.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Sphere.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/World.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/World.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/new_tracer/algebra/Point3.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/new_tracer/model/Camera.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/new_tracer/model/Hittable.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/new_tracer/model/Material.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/new_tracer/model/Ray.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/view/CameraSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/view/CameraSettings.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/view/ObjectController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/view/ObjectController.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715345659804</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="init">
+      <option name="closed" value="true" />
+      <created>1715353633341</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715353633341</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

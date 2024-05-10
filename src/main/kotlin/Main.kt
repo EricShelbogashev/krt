@@ -22,7 +22,10 @@ import raytracer.model.Camera
 import raytracer.model.RayTracer
 import raytracer.model.RenderController
 import raytracer.model.World
-import raytracer.view.*
+import raytracer.view.CameraSettings
+import raytracer.view.ObjectController
+import raytracer.view.RayTracerSettings
+import raytracer.view.RenderControllerSettings
 import java.awt.image.BufferedImage
 
 fun main() = application {
@@ -156,6 +159,9 @@ fun settingsPanel(
                 }
             }
         }
+
+        Divider(color = MaterialTheme.colors.onSurface.copy(alpha = 0.2f))
+
         ObjectController(camera.movementSpeed, world) {
             renderController.renderImage(buffer, rayTracer, camera) {
                 updateImage(buffer)

@@ -68,6 +68,7 @@ fun CameraSettings(camera: Camera, onUpdateSettings: () -> Unit) {
         var samplesPerPixel by remember { mutableStateOf(camera.samplesPerPixel) }
         Text("Samples per pixel: $samplesPerPixel")
         Slider(
+
             value = samplesPerPixel.toFloat(),
             onValueChange = { newValue ->
                 samplesPerPixel = newValue.toInt()
@@ -100,6 +101,7 @@ fun CameraSettings(camera: Camera, onUpdateSettings: () -> Unit) {
             onValueChange = { newValue ->
                 newValue.toIntOrNull()?.let {
                     imageWidth = it
+                    if (it !in 32..1024) return@let
                     camera.imageWidth = it
                     onUpdateSettings()
                 }
@@ -107,13 +109,13 @@ fun CameraSettings(camera: Camera, onUpdateSettings: () -> Unit) {
             label = { Text("Image Width") }
         )
 
-        // Image Height Integer Field
         var imageHeight by remember { mutableStateOf(camera.imageHeight) }
         OutlinedTextField(
             value = imageHeight.toString(),
             onValueChange = { newValue ->
                 newValue.toIntOrNull()?.let {
                     imageHeight = it
+                    if (it !in 32..1024) return@let
                     camera.imageHeight = it
                     onUpdateSettings()
                 }
