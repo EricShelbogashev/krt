@@ -3,7 +3,7 @@ package raytracer.model
 import java.util.*
 import kotlin.math.sqrt
 
-class Sphere(private val center: Point3, private val radius: Double, private val material: Material) : Traceable {
+open class Sphere(private val center: Point3, private val radius: Double, private val material: Material) : Traceable {
     private val uuid by lazy { UUID.randomUUID() }
 
     override fun hit(ray: Ray, timeMin: Double, timeMax: Double): Hit? {

@@ -22,8 +22,4 @@ class RayTracer(private val world: World, var maxDepth: Int) {
             Color(1.0, 1.0, 1.0) * (1.0 - t) + Color(0.5, 0.7, 1.0) * t
         }
     }
-
-    companion object {
-        fun default(): RayTracer = RayTracer(World.default(), 7)
-    }
 }

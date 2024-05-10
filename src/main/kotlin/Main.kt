@@ -22,10 +22,7 @@ import raytracer.model.Camera
 import raytracer.model.RayTracer
 import raytracer.model.RenderController
 import raytracer.model.World
-import raytracer.view.CameraSettings
-import raytracer.view.ObjectController
-import raytracer.view.RayTracerSettings
-import raytracer.view.RenderControllerSettings
+import raytracer.view.*
 import java.awt.image.BufferedImage
 
 fun main() = application {
@@ -159,7 +156,11 @@ fun settingsPanel(
                 }
             }
         }
-        ObjectController(world)
+        ObjectController(camera.movementSpeed, world) {
+            renderController.renderImage(buffer, rayTracer, camera) {
+                updateImage(buffer)
+            }
+        }
     }
 }
 

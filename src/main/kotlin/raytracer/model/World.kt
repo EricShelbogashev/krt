@@ -5,6 +5,38 @@ import kotlin.random.Random
 class World(
     private var root: Traceable? = null
 ) {
+    fun translateObjectById(objectId: String, offset: Point3) {
+        translateById(root, objectId, offset)
+    }
+
+    private fun translateById(node: Traceable?, objectId: String, offset: Point3) {
+        when (node) {
+            is BVHNode -> {
+                node.left?.let { translateById(it, objectId, offset) }
+                node.right?.let { translateById(it, objectId, offset) }
+            }
+
+            is Sphere -> {
+                if (node.id() == objectId) node.translate(offset)
+            }
+        }
+    }
+
+    fun getObjectIds(): List<String> = collectIds(root)
+
+    private fun collectIds(node: Traceable?): List<String> {
+        return when (node) {
+            is BVHNode -> {
+                val leftIds = node.left?.let { collectIds(it) } ?: emptyList()
+                val rightIds = node.right?.let { collectIds(it) } ?: emptyList()
+                leftIds + rightIds
+            }
+
+            is Sphere -> listOf(node.id())
+            else -> emptyList()
+        }
+    }
+
     fun add(obj: Traceable) {
         root = if (root == null) {
             obj
@@ -38,7 +70,12 @@ class World(
             }
 
             world.add(Sphere(Point3(0.0, 1.0, 0.0), 1.0, Dielectric(1.5)))
-            world.add(Sphere(Point3(-4.0, 1.0, 0.0), 1.0, Lambert(Color(0.4, 0.2, 0.1))))
+            val obj = object : Sphere(Point3(-4.0, 1.0, 0.0), 2.0, Lambert(Color(0.4, 0.2, 0.1))) {
+                override fun id(): String {
+                    return "TEST"
+                }
+            }
+            world.add(obj)
             world.add(Sphere(Point3(4.0, 1.0, 0.0), 1.0, Metal(Color(0.7, 0.6, 0.5), 0.05)))
 
             return world
@@ -48,8 +85,8 @@ class World(
 
 
 class BVHNode(objects: List<Traceable>, time0: Double, time1: Double) : Traceable {
-    private var left: Traceable? = null
-    private var right: Traceable? = null
+    var left: Traceable? = null
+    var right: Traceable? = null
     private var box: AABB? = null
 
     init {
@@ -125,14 +162,10 @@ class AABB(val min: Point3, val max: Point3) {
     companion object {
         fun surroundingBox(box0: AABB, box1: AABB): AABB {
             val small = Point3(
-                minOf(box0.min.x, box1.min.x),
-                minOf(box0.min.y, box1.min.y),
-                minOf(box0.min.z, box1.min.z)
+                minOf(box0.min.x, box1.min.x), minOf(box0.min.y, box1.min.y), minOf(box0.min.z, box1.min.z)
             )
             val big = Point3(
-                maxOf(box0.max.x, box1.max.x),
-                maxOf(box0.max.y, box1.max.y),
-                maxOf(box0.max.z, box1.max.z)
+                maxOf(box0.max.x, box1.max.x), maxOf(box0.max.y, box1.max.y), maxOf(box0.max.z, box1.max.z)
             )
             return AABB(small, big)
         }

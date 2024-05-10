@@ -10,7 +10,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import raytracer.model.Camera
-import kotlin.math.nextUp
 
 
 @Composable

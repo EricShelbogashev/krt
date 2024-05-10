@@ -6,6 +6,7 @@ import kotlin.math.sqrt
 import kotlin.random.Random
 
 data class Point3(var x: Double = 0.0, var y: Double = 0.0, var z: Double = 0.0) {
+    constructor(x: Number, y: Number, z: Number) : this(x.toDouble(), y.toDouble(), z.toDouble())
     companion object {
         val ZERO = Point3()
         val ONE = Point3(1.0, 1.0, 1.0)
