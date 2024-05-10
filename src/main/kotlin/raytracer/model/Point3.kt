@@ -52,7 +52,7 @@ data class Point3(var x: Double = 0.0, var y: Double = 0.0, var z: Double = 0.0)
     fun cross(other: Point3): Point3 =
         Point3(y * other.z - z * other.y, z * other.x - x * other.z, x * other.y - y * other.x)
 
-    fun reflect(normal: Point3): Point3 = this - normal * this.dot(normal)
+    fun reflect(normal: Point3): Point3 = this - normal * 2.0 * this.dot(normal)
 
     fun refract(normal: Point3, etaiOverEtat: Double): Point3 {
         val cosTheta = min((-this).dot(normal), 1.0)
