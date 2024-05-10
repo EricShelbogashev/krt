@@ -32,11 +32,6 @@ open class Sphere(private val center: Point3, private val radius: Double, privat
         return Hit.create(hitPoint, root, ray, outwardNormal, material)
     }
 
-    override fun boundingBox(time0: Double, time1: Double): AABB? {
-        val offset = Point3(radius, radius, radius)
-        return AABB(center - offset, center + offset)
-    }
-
     override fun translate(offset: Point3) {
         center.translate(offset)
     }

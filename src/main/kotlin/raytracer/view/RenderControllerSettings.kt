@@ -1,9 +1,6 @@
 package raytracer.view
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Slider
 import androidx.compose.material.Text
@@ -31,7 +28,8 @@ fun RenderControllerSettings(renderController: RenderController, onUpdateSetting
                 onUpdateSettings()
             },
             valueRange = 10f..200f,
-            steps = 19 // Adjust step count for suitable granularity
+            steps = 19, // Adjust step count for suitable granularity,
+            modifier = Modifier.width(200.dp)
         )
 
         // Batch Size Slider
@@ -46,7 +44,8 @@ fun RenderControllerSettings(renderController: RenderController, onUpdateSetting
                 onUpdateSettings()
             },
             valueRange = 1f..100f,
-            steps = 99 // Adjust step count for suitable granularity
+            steps = 99, // Adjust step count for suitable granularity
+            modifier = Modifier.width(200.dp)
         )
     }
 }

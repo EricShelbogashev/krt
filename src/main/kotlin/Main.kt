@@ -18,14 +18,8 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
-import raytracer.model.Camera
-import raytracer.model.RayTracer
-import raytracer.model.RenderController
-import raytracer.model.World
-import raytracer.view.CameraSettings
-import raytracer.view.ObjectController
-import raytracer.view.RayTracerSettings
-import raytracer.view.RenderControllerSettings
+import raytracer.model.*
+import raytracer.view.*
 import java.awt.image.BufferedImage
 
 fun main() = application {
@@ -81,6 +75,16 @@ fun main() = application {
         }) {
             Row {
                 Image(bitmap = imageBitmap, contentDescription = null)
+                LoadObject {
+                    val triangles = ObjParser(
+                        it.absolutePath,
+                        Dielectric(1.5)
+                    ).triangles
+                    triangles.forEach(world::add)
+                    renderController.renderImage(buffer, rayTracer, camera) {
+                        imageBitmap = buffer.toComposeImageBitmap()
+                    }
+                }
                 Box(Modifier.verticalScroll(scrollState)) {
                     settingsPanel(
                         world,
@@ -111,7 +115,6 @@ fun settingsPanel(
 ) {
     Column(
         modifier = Modifier
-            .fillMaxWidth()
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp),
         horizontalAlignment = Alignment.CenterHorizontally

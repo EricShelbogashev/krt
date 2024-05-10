@@ -45,20 +45,6 @@ class Triangle(
         return Hit.create(hitPoint, t, ray, outwardNormal, material)
     }
 
-    override fun boundingBox(time0: Double, time1: Double): AABB {
-        val minX = minOf(v0.x, v1.x, v2.x)
-        val minY = minOf(v0.y, v1.y, v2.y)
-        val minZ = minOf(v0.z, v1.z, v2.z)
-        val maxX = maxOf(v0.x, v1.x, v2.x)
-        val maxY = maxOf(v0.y, v1.y, v2.y)
-        val maxZ = maxOf(v0.z, v1.z, v2.z)
-
-        val minPoint = Point3(minX, minY, minZ)
-        val maxPoint = Point3(maxX, maxY, maxZ)
-
-        return AABB(minPoint, maxPoint)
-    }
-
     override fun translate(offset: Point3) {
         v0.translate(offset)
         v1.translate(offset)

@@ -45,6 +45,11 @@ data class Point3(var x: Double = 0.0, var y: Double = 0.0, var z: Double = 0.0)
     operator fun times(scalar: Double): Point3 = Point3(x * scalar, y * scalar, z * scalar)
     operator fun div(other: Point3): Point3 = Point3(x / other.x, y / other.y, z / other.z)
     operator fun div(scalar: Double): Point3 = Point3(x / scalar, y / scalar, z / scalar)
+    operator fun divAssign(scalar: Double) {
+        x /= scalar
+        y /= scalar
+        z /= scalar
+    }
 
     private fun l2norm(): Double = x * x + y * y + z * z
     fun length(): Double = sqrt(l2norm())
