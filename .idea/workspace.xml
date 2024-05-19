@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b99379-65b0-4ac0-955d-d3e46b6ab2a9" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/ObjReader.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/view/LoadModelUI.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ORIGAMI_Chat_Free.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Point3.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Point3.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Sphere.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Sphere.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Traceable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Traceable.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Triangle.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Triangle.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/World.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/World.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/loadObjFile.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/view/RayTracerSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/view/RayTracerSettings.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/view/RenderControllerSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/view/RenderControllerSettings.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +75,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -97,6 +88,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/kotlin/new_tracer/model" />
       <recent name="$PROJECT_DIR$/src/main/kotlin/new_tracer/algebra" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
       <recent name="new_tracer.model" />
@@ -145,7 +139,13 @@
       <updated>1715287623021</updated>
       <workItem from="1715287624069" duration="6406000" />
       <workItem from="1715318627531" duration="3646000" />
-      <workItem from="1715367259512" duration="958000" />
+      <workItem from="1715367259512" duration="1630000" />
+      <workItem from="1715573326566" duration="1855000" />
+      <workItem from="1715607217503" duration="3497000" />
+      <workItem from="1715614604240" duration="973000" />
+      <workItem from="1715616233870" duration="4000" />
+      <workItem from="1715626530437" duration="15000" />
+      <workItem from="1716106623028" duration="1000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -227,7 +227,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715354126198</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="init">
+      <option name="closed" value="true" />
+      <created>1715368528688</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1715368528688</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
