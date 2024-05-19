@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b99379-65b0-4ac0-955d-d3e46b6ab2a9" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/ORIGAMI_Chat_Free.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/World.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/World.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +48,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "EricShelbogashev"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/EricShelbogashev/krt.git",
+    "accountId": "4d0c1d5d-4b4f-467b-95dd-860646d395aa"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -145,7 +155,7 @@
       <workItem from="1715614604240" duration="973000" />
       <workItem from="1715616233870" duration="4000" />
       <workItem from="1715626530437" duration="15000" />
-      <workItem from="1716106623028" duration="1000" />
+      <workItem from="1716106623028" duration="682000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -235,7 +245,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715368528688</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="init">
+      <option name="closed" value="true" />
+      <created>1716106627331</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1716106627331</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
