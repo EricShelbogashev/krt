@@ -14,6 +14,4 @@ data class Hit(
             return Hit(p, t, normal, isFrontFace, material)
         }
     }
-
-    fun scatter(ray: Ray): Scattered? = material.scatter(ray, this)
 }
