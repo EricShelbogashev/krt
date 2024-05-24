@@ -2,7 +2,7 @@ package raytracer.model
 
 import kotlin.random.Random
 
-class World(private val objects: MutableList<Traceable> = mutableListOf()) {
+class World(val objects: MutableList<Traceable> = mutableListOf()) {
 
     fun translateObjectById(objectId: String, offset: Point3) {
         objects.find { it.id() == objectId }?.translate(offset)

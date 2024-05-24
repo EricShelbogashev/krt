@@ -1,6 +1,8 @@
 package raytracer.model
 
 import kotlinx.coroutines.*
+import java.awt.Color
+import java.awt.Point
 import java.awt.image.BufferedImage
 import java.util.concurrent.Executors
 import javax.swing.SwingUtilities
@@ -14,6 +16,11 @@ class RenderController(
     private val renderDispatcher =
         Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors()).asCoroutineDispatcher()
     private var lastRepaintTime = 0L
+    private var useWireframe: Boolean = false
+
+    fun toggleWireframeMode() {
+        useWireframe = !useWireframe
+    }
 
     fun renderImage(
         image: BufferedImage,
@@ -22,12 +29,26 @@ class RenderController(
         onUpdate: (() -> Unit),
     ) {
         renderJob?.cancel()
+        if (useWireframe) {
+            renderWireframe(image, rayTracer.world, camera, onUpdate)
+        } else {
+            renderRayTracedImage(image, rayTracer, camera, onUpdate)
+        }
+
+    }
+
+    private fun renderRayTracedImage(
+        image: BufferedImage,
+        rayTracer: RayTracer,
+        camera: Camera,
+        onUpdate: (() -> Unit),
+    ) {
+        val pixels = (0 until camera.imageHeight).flatMap { j ->
+            (0 until camera.imageWidth).map { i ->
+                Pair(j, i)
+            }
+        }.shuffled()
         renderJob = CoroutineScope(renderDispatcher).launch {
-            val pixels = (0 until camera.imageHeight).flatMap { j ->
-                (0 until camera.imageWidth).map { i ->
-                    Pair(j, i)
-                }
-            }.shuffled()
             pixels.chunked(batchSize).forEach { batch ->
                 batch.map { (j, i) ->
                     async {
@@ -57,6 +78,41 @@ class RenderController(
             }
             onUpdate.invoke()
         }
+    }
+
+    private fun renderWireframe(
+        image: BufferedImage,
+        world: World,
+        camera: Camera,
+        onUpdate: (() -> Unit),
+    ) {
+        // Clear image
+        val graphics = image.createGraphics()
+        graphics.color = Color.BLACK
+        graphics.fillRect(0, 0, image.width, image.height)
+        graphics.dispose()
+
+        // Render wireframe
+        val lineSegments = world.objects.flatMap { it.linearize(1.0) } // Adjust the coefficient as needed
+        val graphics2D = image.createGraphics()
+        graphics2D.color = Color.WHITE
+
+        lineSegments.forEach { segment ->
+            val start = camera.project(segment.start)
+            val end = camera.project(segment.end)
+            graphics2D.drawLine(start.x, start.y, end.x, end.y)
+        }
+
+        graphics2D.dispose()
+        onUpdate.invoke()
+    }
+
+    // Assuming the following method is added to the Camera class:
+    fun Camera.project(point: Point3): Point {
+        // Simple orthographic projection, adjust for your camera setup
+        val x = ((point.x + 1) * 0.5 * this.imageWidth).toInt()
+        val y = ((point.y + 1) * 0.5 * this.imageHeight).toInt()
+        return Point(x, this.imageHeight - y) // Flip y-axis
     }
 
     override fun close() {

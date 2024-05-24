@@ -1,6 +1,6 @@
 package raytracer.model
 
-class RayTracer(private val world: World, var maxDepth: Int) {
+class RayTracer(val world: World, var maxDepth: Int) {
     fun color(ray: Ray): Color {
         return colorRecursively(ray, maxDepth)
     }

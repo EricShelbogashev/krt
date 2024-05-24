@@ -1,6 +1,8 @@
 package raytracer.model
 
 import java.util.*
+import kotlin.math.cos
+import kotlin.math.sin
 import kotlin.math.sqrt
 
 open class Sphere(private val center: Point3, private val radius: Double, private val material: Material) : Traceable {
@@ -41,13 +43,47 @@ open class Sphere(private val center: Point3, private val radius: Double, privat
     override fun linearize(coefficient: Double): List<LineSegment> {
         val segments = mutableListOf<LineSegment>()
         val steps = (coefficient * 10).toInt() // Adjust this multiplier for more or fewer segments
+
+        // Generate horizontal circles
         for (i in 0 until steps) {
             val theta1 = Math.PI * 2 * i / steps
             val theta2 = Math.PI * 2 * (i + 1) / steps
-            val p1 = center + Point3(radius * Math.cos(theta1), radius * Math.sin(theta1), 0.0)
-            val p2 = center + Point3(radius * Math.cos(theta2), radius * Math.sin(theta2), 0.0)
-            segments.add(LineSegment(p1, p2))
+            for (j in 0 until steps) {
+                val phi = Math.PI * j / steps
+                val p1 = center + Point3(
+                    radius * cos(theta1) * sin(phi),
+                    radius * sin(theta1) * sin(phi),
+                    radius * cos(phi)
+                )
+                val p2 = center + Point3(
+                    radius * cos(theta2) * sin(phi),
+                    radius * sin(theta2) * sin(phi),
+                    radius * cos(phi)
+                )
+                segments.add(LineSegment(p1, p2))
+            }
         }
+
+        // Generate vertical circles
+        for (i in 0 until steps) {
+            val theta = Math.PI * 2 * i / steps
+            for (j in 0 until steps) {
+                val phi1 = Math.PI * j / steps
+                val phi2 = Math.PI * (j + 1) / steps
+                val p1 = center + Point3(
+                    radius * cos(theta) * sin(phi1),
+                    radius * sin(theta) * sin(phi1),
+                    radius * cos(phi1)
+                )
+                val p2 = center + Point3(
+                    radius * cos(theta) * sin(phi2),
+                    radius * sin(theta) * sin(phi2),
+                    radius * cos(phi2)
+                )
+                segments.add(LineSegment(p1, p2))
+            }
+        }
+
         return segments
     }
 }

@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b99379-65b0-4ac0-955d-d3e46b6ab2a9" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Emissive.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Hit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Hit.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Material.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Material.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/RayTracer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/RayTracer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/RenderController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/RenderController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Sphere.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Sphere.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/World.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/World.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -164,7 +164,7 @@
       <workItem from="1716107314130" duration="65000" />
       <workItem from="1716181384916" duration="1100000" />
       <workItem from="1716451920915" duration="565000" />
-      <workItem from="1716588588802" duration="1023000" />
+      <workItem from="1716588588802" duration="2634000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -270,7 +270,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716107367624</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="init">
+      <option name="closed" value="true" />
+      <created>1716589714388</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1716589714388</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

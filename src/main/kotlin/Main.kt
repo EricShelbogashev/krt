@@ -4,6 +4,7 @@ import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -37,6 +38,9 @@ fun main() = application {
     }
 
     var imageBitmap by remember { mutableStateOf(buffer.toComposeImageBitmap()) }
+    renderController.renderImage(buffer, rayTracer, camera) {
+        imageBitmap = buffer.toComposeImageBitmap()
+    }
 
     Window(
         onCloseRequest = ::exitApplication,
@@ -75,16 +79,6 @@ fun main() = application {
         }) {
             Row {
                 Image(bitmap = imageBitmap, contentDescription = null)
-                LoadObject {
-                    val triangles = ObjParser(
-                        it.absolutePath,
-                        Dielectric(1.5)
-                    ).triangles
-                    triangles.forEach(world::add)
-                    renderController.renderImage(buffer, rayTracer, camera) {
-                        imageBitmap = buffer.toComposeImageBitmap()
-                    }
-                }
                 Box(Modifier.verticalScroll(scrollState)) {
                     settingsPanel(
                         world,
@@ -125,6 +119,36 @@ fun settingsPanel(
             color = MaterialTheme.colors.onSurface,
             modifier = Modifier.align(Alignment.Start)
         )
+
+        Divider(color = MaterialTheme.colors.onSurface.copy(alpha = 0.2f))
+
+        Column(
+            modifier = Modifier.padding(16.dp).fillMaxWidth(),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            Text("Toggles", style = MaterialTheme.typography.h6)
+
+            Row {
+                LoadObject {
+                    val triangles = ObjParser(
+                        it.absolutePath,
+                        Dielectric(1.5)
+                    ).triangles
+                    triangles.forEach(world::add)
+                    renderController.renderImage(buffer, rayTracer, camera) {
+                        updateImage(buffer)
+                    }
+                }
+                Button(onClick = {
+                    renderController.toggleWireframeMode()
+                    renderController.renderImage(buffer, rayTracer, camera) {
+                        updateImage(buffer)
+                    }
+                }) {
+                    Text("Toggle Wireframe mode")
+                }
+            }
+        }
 
         Divider(color = MaterialTheme.colors.onSurface.copy(alpha = 0.2f))
 
