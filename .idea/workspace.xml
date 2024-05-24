@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20b99379-65b0-4ac0-955d-d3e46b6ab2a9" name="Changes" comment="init">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Emissive.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Hit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Hit.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Material.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/Material.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/RayTracer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/RayTracer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/World.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/raytracer/model/World.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,18 +53,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "EricShelbogashev"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;EricShelbogashev&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/EricShelbogashev/krt.git",
-    "accountId": "4d0c1d5d-4b4f-467b-95dd-860646d395aa"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/EricShelbogashev/krt.git&quot;,
+    &quot;accountId&quot;: &quot;4d0c1d5d-4b4f-467b-95dd-860646d395aa&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -156,6 +161,10 @@
       <workItem from="1715616233870" duration="4000" />
       <workItem from="1715626530437" duration="15000" />
       <workItem from="1716106623028" duration="682000" />
+      <workItem from="1716107314130" duration="65000" />
+      <workItem from="1716181384916" duration="1100000" />
+      <workItem from="1716451920915" duration="565000" />
+      <workItem from="1716588588802" duration="1023000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -253,7 +262,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716106627331</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="init">
+      <option name="closed" value="true" />
+      <created>1716107367624</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1716107367624</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

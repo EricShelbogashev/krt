@@ -11,10 +11,11 @@ class RayTracer(private val world: World, var maxDepth: Int) {
         val hitRecord = world.hit(ray, 0.001, Double.POSITIVE_INFINITY)
         return if (hitRecord != null) {
             val scattered = hitRecord.material.scatter(ray, hitRecord)
+            val emitted = hitRecord.material.emitted(0.0, 0.0, hitRecord.p) // u and v are set to 0.0 for simplicity
             if (scattered != null) {
-                scattered.attenuation * colorRecursively(scattered.ray, depth - 1)
+                emitted + scattered.attenuation * colorRecursively(scattered.ray, depth - 1)
             } else {
-                Point3.ZERO
+                emitted
             }
         } else {
             val unitDirection = ray.direction.unit()

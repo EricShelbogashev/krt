@@ -3,9 +3,9 @@ package raytracer.model
 import java.util.*
 
 class Triangle(
-    private val v0: Point3,
-    private val v1: Point3,
-    private val v2: Point3,
+    private var v0: Point3,
+    private var v1: Point3,
+    private var v2: Point3,
     private val material: Material,
 ) : Traceable {
     private val uuid by lazy { UUID.randomUUID() }
@@ -46,12 +46,20 @@ class Triangle(
     }
 
     override fun translate(offset: Point3) {
-        v0.translate(offset)
-        v1.translate(offset)
-        v2.translate(offset)
+        v0 += offset
+        v1 += offset
+        v2 += offset
     }
 
     override fun id(): String {
         return "Triangle[$uuid]"
+    }
+
+    override fun linearize(coefficient: Double): List<LineSegment> {
+        return listOf(
+            LineSegment(v0, v1),
+            LineSegment(v1, v2),
+            LineSegment(v2, v0)
+        )
     }
 }

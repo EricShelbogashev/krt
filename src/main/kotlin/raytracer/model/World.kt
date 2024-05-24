@@ -43,6 +43,7 @@ class World(private val objects: MutableList<Traceable> = mutableListOf()) {
             }
 
             world.add(Sphere(Point3(0.0, 1.0, 0.0), 1.0, Dielectric(1.5)))
+            world.add(Sphere(Point3(0.0, 1.0, 2.0), 1.0, Emissive(Color(0.1,0.7,0.4), 2.0)))
             world.add(object : Sphere(Point3(-4.0, 1.0, 0.0), 2.0, Lambert(Color(0.4, 0.2, 0.1))) {
                 override fun id(): String {
                     return "TEST"
