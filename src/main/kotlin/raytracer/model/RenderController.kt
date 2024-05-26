@@ -93,14 +93,12 @@ class RenderController(
 
         // Render wireframe
         val lineSegments = world.objects.flatMap { it.linearize(1.0) } // Adjust the coefficient as needed
-//        println(lineSegments)
         val graphics2D = image.createGraphics()
         graphics2D.color = Color.WHITE
 
         lineSegments.forEach { segment ->
             val start = camera.project(segment.start)
             val end = camera.project(segment.end)
-//            println("$start $end")
             if (start != null && end != null) {
                 graphics2D.drawLine(start.x, start.y, end.x, end.y)
             }
@@ -109,15 +107,6 @@ class RenderController(
         graphics2D.dispose()
         onUpdate.invoke()
     }
-
-//    // Assuming the following method is added to the Camera class:
-//    fun Camera.project(point: Point3): Point {
-//        // Simple orthographic projection, adjust for your camera setup
-//        val x = ((point.x + 1) * 0.5 * this.imageWidth).toInt()
-//        val y = ((point.y + 1) * 0.5 * this.imageHeight).toInt()
-//        return Point(x, this.imageHeight - y) // Flip y-axis
-//    }
-
 
     override fun close() {
         renderDispatcher.close()
