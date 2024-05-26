@@ -116,19 +116,24 @@ class Camera(
         )
     }
 
-    fun project(point: Point3): Point {
+    fun project(point: Point3): Point? {
         val cameraSpacePoint = point - _origin
         val x = cameraSpacePoint.dot(u)
         val y = cameraSpacePoint.dot(v)
         val z = cameraSpacePoint.dot(w)
 
         if (z >= 0) {
-            return Point(-1, -1)
+            return null
         }
-        val screenX = ((x / -z) + 1) * 0.5 * imageWidth
-        val screenY = ((y / -z) + 1) * 0.5 * imageHeight
 
-        return Point(screenX.toInt(), (imageHeight - screenY).toInt())
+        val theta = Math.toRadians(fov)
+        val halfHeight = tan(theta / 2)
+        val halfWidth = aspectRatio * halfHeight
+
+        val screenX = (x / (-z * halfWidth)) * (imageWidth / 2) + (imageWidth / 2)
+        val screenY = (y / (-z * halfHeight)) * (imageHeight / 2) + (imageHeight / 2)
+
+        return Point(screenX.toInt(), (imageHeight - screenY.toInt()).toInt())
     }
 
     companion object {

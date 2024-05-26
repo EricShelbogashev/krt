@@ -2,7 +2,6 @@ package raytracer.model
 
 import kotlinx.coroutines.*
 import java.awt.Color
-import java.awt.Point
 import java.awt.image.BufferedImage
 import java.util.concurrent.Executors
 import javax.swing.SwingUtilities
@@ -102,7 +101,7 @@ class RenderController(
             val start = camera.project(segment.start)
             val end = camera.project(segment.end)
 //            println("$start $end")
-            if (start != Point(-1, -1) && end != Point(-1, -1)) {
+            if (start != null && end != null) {
                 graphics2D.drawLine(start.x, start.y, end.x, end.y)
             }
         }
