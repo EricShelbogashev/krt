@@ -42,7 +42,7 @@ open class Sphere(private val center: Point3, private val radius: Double, privat
 
     override fun linearize(coefficient: Double): List<LineSegment> {
         val segments = mutableListOf<LineSegment>()
-        val steps = (coefficient * 10).toInt() // Adjust this multiplier for more or fewer segments
+        val steps = (coefficient * 15).toInt() // Adjust this multiplier for more or fewer segments
 
         // Generate horizontal circles
         for (i in 0 until steps) {

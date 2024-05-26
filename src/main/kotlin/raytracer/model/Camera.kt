@@ -1,5 +1,6 @@
 package raytracer.model
 
+import java.awt.Point
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.tan
@@ -24,7 +25,7 @@ class Camera(
     focusDist: Double,
     var imageWidth: Int,
     var imageHeight: Int,
-    samplesPerPixel: Int = 5
+    samplesPerPixel: Int = 5,
 ) {
     private var _origin = origin
     private var _target = target
@@ -113,6 +114,21 @@ class Camera(
             _origin + offset,
             lowerLeftCorner + horizontal * s + vertical * t - _origin - offset
         )
+    }
+
+    fun project(point: Point3): Point {
+        val cameraSpacePoint = point - _origin
+        val x = cameraSpacePoint.dot(u)
+        val y = cameraSpacePoint.dot(v)
+        val z = cameraSpacePoint.dot(w)
+
+        if (z >= 0) {
+            return Point(-1, -1)
+        }
+        val screenX = ((x / -z) + 1) * 0.5 * imageWidth
+        val screenY = ((y / -z) + 1) * 0.5 * imageHeight
+
+        return Point(screenX.toInt(), (imageHeight - screenY).toInt())
     }
 
     companion object {
