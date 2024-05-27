@@ -17,14 +17,14 @@ data class Point3(var x: Double = 0.0, var y: Double = 0.0, var z: Double = 0.0)
 
         fun randomInUnitSphere(): Point3 {
             while (true) {
-                val v = random(-1.0, 1.0)
+                val v = random(0.0, 1.0)
                 if (v.length() < 1) return v
             }
         }
 
         fun randomInUnitDisk(): Point3 {
             while (true) {
-                val p = Point3(Random.nextDouble(-1.0, 1.0), Random.nextDouble(-1.0, 1.0), 0.0)
+                val p = Point3(Random.nextDouble(0.0, 1.0), Random.nextDouble(0.0, 1.0), 0.0)
                 if (p.length() < 1) return p
             }
         }
