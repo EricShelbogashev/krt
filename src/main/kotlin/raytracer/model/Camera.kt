@@ -25,7 +25,6 @@ class Camera(
     focusDist: Double,
     var imageWidth: Int,
     var imageHeight: Int,
-    samplesPerPixel: Int = 5,
 ) {
     private var _origin = origin
     private var _target = target
